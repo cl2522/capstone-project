@@ -1,0 +1,53 @@
+<div>
+  <div>
+    <h1>
+      <%= @the_fridge.name %>
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<h2>Add a new food item</h2>
+
+<form action="/insert_food_item" method="post">
+  <div>
+    <label for="name_box">
+      Name
+    </label>
+    <input type="text" id="name_box" name="query_name">
+  </div>
+
+  <div>
+    <label for="category_box">
+      Category
+    </label>
+    <input type="text" id="category_box" name="query_category">
+  </div>
+
+  <input type="hidden" name="query_fridge_id" value="<%= @the_fridge.id %>">
+
+  <button>
+    Add item
+  </button>
+</form>
+
+<hr>
+
+<h2>Items in this fridge</h2>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Added on</th>
+  </tr>
+
+  <% @food_items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.category %></td>
+      <td><%= item.created_at.strftime("%b %e, %Y") %></td>
+    </tr>
+  <% end %>
+</table>

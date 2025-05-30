@@ -1,0 +1,76 @@
+<div>
+  <div>
+    <h1>
+      List of all food items
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new food item
+    </h2>
+
+    <form action="/insert_food_item" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="category_box">
+          Category
+        </label>
+        <input type="text" id="category_box" name="query_category">     
+      </div>
+
+      <div>
+        <label for="fridge_id_box">
+          Fridge ID
+        </label>
+        <input type="text" id="fridge_id_box" name="query_fridge_id">
+      </div>
+
+      <button>
+        Create item
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Fridge ID</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th></th>
+      </tr>
+
+      <% @list_of_food_items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= item.name %></td>
+          <td><%= item.category %></td>
+          <td><%= item.fridge_id %></td>
+          <td><%= time_ago_in_words(item.created_at) %> ago</td>
+          <td><%= time_ago_in_words(item.updated_at) %> ago</td>
+          <td>
+            <a href="/food_items/<%= item.id %>">Show details</a>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div>
+  <div>
+    <h1>
+      All fridges
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new fridge
+    </h2>
+
+    <form action="/insert_fridge" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <button>
+        Add fridge
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+
+<ul>
+  <% @list_of_fridges.each do |a_fridge| %>
+    <li>
+      <a href="/fridges/<%= a_fridge.id %>">
+        <%= a_fridge.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
