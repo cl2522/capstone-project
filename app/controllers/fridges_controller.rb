@@ -1,7 +1,9 @@
 class FridgesController < ApplicationController
   def index
     matching_fridges = Fridge.all
-    @list_of_fridges = matching_fridges.order({ created_at: :desc })
+    @list_of_fridges = current_user.fridges.order({ created_at: :desc })
+    render({ template: "fridges/index" })
+
 
     render({ template: "fridges/index" })
   end
@@ -21,6 +23,7 @@ class FridgesController < ApplicationController
   def create
     the_fridge = Fridge.new
     the_fridge.name = params.fetch("query_name")
+    the_fridge.user_id = current_user.id
 
     if the_fridge.valid?
       the_fridge.save
