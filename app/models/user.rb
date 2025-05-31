@@ -23,4 +23,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many  :fridges, class_name: "Fridge", foreign_key: "creator_id", dependent: :destroy
+  has_many  :food_items, class_name: "FoodItem", foreign_key: "adder_id", dependent: :nullify
+  
 end

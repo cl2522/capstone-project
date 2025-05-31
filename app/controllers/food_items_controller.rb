@@ -19,6 +19,7 @@ class FoodItemsController < ApplicationController
     the_item.name = params.fetch("query_name")
     the_item.category = params.fetch("query_category")
     the_item.fridge_id = params.fetch("query_fridge_id")
+    the_item.adder_id = current_user.id
     # the_item.expires_on = params.fetch("query_expires_on")
 
     if the_item.valid?
