@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>Rails Template</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -8,9 +9,15 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.6/dist/morph/bootstrap.min.css">
+
+
   </head>
 
   <body>
+
+<div class="mx-auto p-2" style="width: 500px;">
 
 <% if current_user.present? %>
   <a href="/users/edit">Edit profile</a>
@@ -35,6 +42,7 @@
       <%= alert %>
     </div>
   <% end %>
+  </div>
   
    <%= yield %>
   </body>
