@@ -1,9 +1,9 @@
-<div class="mx-auto p-2" style="width: 500px;">
+<div class="mx-auto p-2" style="width: 600px;">
 
 <div>
   <div>
     <h1>
-      Food Item #<%= @the_food_item.id %> details
+      <%= @the_food_item.name %> details
     </h1>
 
     <div>
@@ -13,22 +13,18 @@
         </a>
       </div>
 
-      <div>
-        <a href="/delete_food_item/<%= @the_food_item.id %>">
-          Delete item
-        </a>
-      </div>
+     
     </div>
 
     <dl>
-      <dt>Name</dt>
-      <dd><%= @the_food_item.name %></dd>
+      <!--<dt>Name</dt>
+      <dd><%#= @the_food_item.name %></dd>-->
 
       <dt>Category</dt>
       <dd><%= @the_food_item.category %></dd>
 
       <dt>Fridge</dt>
-      <dd><%= @the_food_item.fridge_id %></dd>
+      <dd><%= @the_food_item.fridge.name %></dd>
 
       <dt>Created at</dt>
       <dd><%= time_ago_in_words(@the_food_item.created_at) %> ago</dd>
@@ -43,21 +39,21 @@
 
 <div>
   <div>
-    <h2>Edit item</h2>
+    <h2>Update item</h2>
 
     <form action="/modify_food_item/<%= @the_food_item.id %>" method="post">
-      <div>
+      <div class="mb-1">
         <label for="name_box">Name</label>
         <input type="text" id="name_box" name="query_name" value="<%= @the_food_item.name %>">
       </div>
 
-      <div>
+      <div class="mb-1">
         <label for="category_box">Category</label>
         <input type="text" id="category_box" name="query_category" value="<%= @the_food_item.category %>">
 
       </div>
 
-      <div>
+      <div class="mb-2">
         <label for="fridge_id_box">Fridge</label>
         <input type="text" id="fridge_id_box" name="query_fridge_id" value="<%= @the_food_item.fridge_id %>">
       </div>
@@ -66,6 +62,12 @@
     </form>
   </div>
 </div>
+
+ <div class="mb-2">
+        <a href="/delete_food_item/<%= @the_food_item.id %>">
+          Delete item
+        </a>
+      </div>
 
 <hr>
 </div>

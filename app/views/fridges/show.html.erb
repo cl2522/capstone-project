@@ -1,4 +1,4 @@
-<div class="mx-auto p-2" style="width: 500px;">
+<div class="mx-auto p-2" style="width: 600px;">
 <div>
   <div>
     <h1>
@@ -12,14 +12,14 @@
 <h2>Add a new food item</h2>
 
 <form action="/insert_food_item" method="post">
-  <div>
+  <div class="mb-1">
     <label for="name_box">
       Name
     </label>
     <input type="text" id="name_box" name="query_name">
   </div>
 
-  <div>
+  <div class="mb-2">
     <label for="category_box">
       Category
     </label>
@@ -37,11 +37,12 @@
 
 <h2>Items in this fridge</h2>
 
-<table border="1">
-  <tr>
+<table class="table table-bordered">
+  <tr >
     <th>Name</th>
     <th>Category</th>
     <th>Added on</th>
+    <th> </th>
   </tr>
 
   <% @food_items.each do |item| %>
@@ -49,7 +50,26 @@
       <td><%= item.name %></td>
       <td><%= item.category %></td>
       <td><%= item.created_at.strftime("%b %e, %Y") %></td>
+      <td>
+        <form action="/delete_food_item/<%= item.id %>" method="get">
+        <button type="submit">
+            Delete
+          </button>
+        </form>
+      </td>
     </tr>
   <% end %>
 </table>
+
+
+<div class="mt-4">
+  <!--<form action="/delete_fridge/<%#= @the_fridge.id %>" method="get">
+    <button type="submit">
+      Delete this fridge
+    </button>
+  </form>-->
+  <a href="/delete_fridge/<%= @the_fridge.id %>">
+          Delete this fridge
+        </a>
+</div>
 </div>

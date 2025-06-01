@@ -1,10 +1,17 @@
 class FoodItemsController < ApplicationController
   def index
-    matching_items = FoodItem.all
-    @list_of_food_items = matching_items.order({ created_at: :desc })
+    # matching_items = FoodItem.all
+    # @list_of_food_items = matching_items.order({ created_at: :desc })
+    @list_of_fridges = current_user.fridges
+
+    my_fridges = current_user.fridges
+    @list_of_food_items = FoodItem.where(fridge_id: my_fridges.pluck(:id)).order(created_at: :desc)
 
     render({ template: "food_items/index" })
+
+
   end
+  
 
   def show
     the_id = params.fetch("path_id")
@@ -50,9 +57,10 @@ class FoodItemsController < ApplicationController
   def destroy
     the_id = params.fetch("path_id")
     the_item = FoodItem.where({ id: the_id }).at(0)
-
+      fridge_id = the_item.fridge_id
+  
     the_item.destroy
 
-    redirect_to("/food_items", { notice: "Item removed successfully." })
+    redirect_to("/fridges/#{fridge_id}", { notice: "Item removed successfully." })
   end
 end

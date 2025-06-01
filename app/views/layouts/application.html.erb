@@ -13,11 +13,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.6/dist/morph/bootstrap.min.css">
 
 
+
   </head>
 
   <body>
 
-<div class="mx-auto p-2" style="width: 500px;">
+<div class="mx-auto p-2" style="width: 600px;">
 
 <% if current_user.present? %>
   <a href="/users/edit">Edit profile</a>
@@ -31,12 +32,14 @@
 
    <a href="/">Fridges</a>
 
+   <a href="/food_items">All food items</a>
+
     <% if notice.present? %>
     <div>
       <%= notice %>
     </div>
   <% end %>
-
+  
   <% if alert.present? %>
     <div>
       <%= alert %>
