@@ -54,8 +54,8 @@
       </div>
 
       <div class="mb-2">
-        <label for="fridge_id_box">Fridge</label>
-        <input type="text" id="fridge_id_box" name="query_fridge_id" value="<%= @the_food_item.fridge_id %>">
+        <label for="fridge_name_box">Fridge</label>
+        <input type="text" id="fridge_name_box" name="query_fridge_name" value="<%= @the_food_item.fridge.name %>">
       </div>
 
       <button>Update item</button>
@@ -63,7 +63,7 @@
   </div>
 </div>
 
- <div class="mb-2">
+ <div class="mt-2">
         <a href="/delete_food_item/<%= @the_food_item.id %>">
           Delete item
         </a>

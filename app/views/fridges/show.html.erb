@@ -43,6 +43,7 @@
     <th>Category</th>
     <th>Added on</th>
     <th> </th>
+    <th> </th>
   </tr>
 
   <% @food_items.each do |item| %>
@@ -50,6 +51,7 @@
       <td><%= item.name %></td>
       <td><%= item.category %></td>
       <td><%= item.created_at.strftime("%b %e, %Y") %></td>
+      <td><a href="/food_items/<%= item.id %>">Update item</a></td>
       <td>
         <form action="/delete_food_item/<%= item.id %>" method="get">
         <button type="submit">

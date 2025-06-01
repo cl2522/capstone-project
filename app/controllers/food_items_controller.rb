@@ -44,7 +44,10 @@ class FoodItemsController < ApplicationController
     the_item.name = params.fetch("query_name")
     the_item.category = params.fetch("query_category")
     # the_item.expires_on = params.fetch("query_expires_on")
-    the_item.fridge_id = params.fetch("query_fridge_id")
+
+    fridge_name = params.fetch("query_fridge_name")
+    fridge = current_user.fridges.find_or_create_by(name: fridge_name)
+    the_item.fridge_id = fridge.id
 
     if the_item.valid?
       the_item.save
